@@ -1,8 +1,11 @@
+import GridOverlay from './components/GridOverlay'
+
 function App() {
   return (
-    <main>
-      <h1>giarddesign</h1>
-    </main>
+    <>
+      <GridOverlay />
+      <main></main>
+    </>
   )
 }
 
