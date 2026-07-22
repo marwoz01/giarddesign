@@ -1,4 +1,23 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/montserrat';
 @import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter Variable', system-ui, sans-serif;
+  --font-heading: 'Montserrat Variable', system-ui, sans-serif;
+
+  --color-ink: #111111;
+  --color-surface: #ffffff;
+
+  --text-nav: 14px;
+  --text-nav--line-height: 1.5;
+  --text-nav--letter-spacing: -0.01em;
+
+  --text-h1: 60px;
+  --text-h1--line-height: 70px;
+  --text-h1--letter-spacing: 0;
+  --text-h1--font-weight: 500;
+}
 
 :root {
   --grid-columns: 12;
