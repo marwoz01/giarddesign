@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import Logo from '../assets/icons/logo.svg?react'
 import Search from '../assets/icons/lupa.svg?react'
 import Chevron from '../assets/icons/chevron.svg?react'
+import MenuIcon from './icons/MenuIcon'
+import CloseIcon from './icons/CloseIcon'
 
 const MENU_ITEMS = [
   { label: 'Oferta', href: '#oferta', hasDropdown: true },
@@ -14,18 +16,22 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    if (!menuOpen) return
+    const query = window.matchMedia('(min-width: 768px)')
 
-    function handleKeyDown(event) {
-      if (event.key === 'Escape') setMenuOpen(false)
+    function handleChange(event) {
+      if (event.matches) setMenuOpen(false)
     }
 
-    document.body.style.overflow = 'hidden'
-    window.addEventListener('keydown', handleKeyDown)
+    query.addEventListener('change', handleChange)
+    return () => query.removeEventListener('change', handleChange)
+  }, [])
 
+  useEffect(() => {
+    if (!menuOpen) return
+
+    document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = ''
-      window.removeEventListener('keydown', handleKeyDown)
     }
   }, [menuOpen])
 
@@ -33,7 +39,7 @@ function Navbar() {
     <header className="bg-surface text-ink">
       <div className="page-container flex h-18 items-center justify-between">
         <a href="#" aria-label="giarddesign — strona główna">
-          <Logo className="h-[19px] w-[115px]" />
+          <Logo />
         </a>
 
         <nav className="hidden md:block">
@@ -64,16 +70,7 @@ function Navbar() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(true)}
         >
-          <svg
-            className="size-6"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          >
-            <path d="M3 6h18M3 12h18M3 18h18" />
-          </svg>
+          <MenuIcon className="size-6" />
         </button>
       </div>
 
@@ -97,16 +94,7 @@ function Navbar() {
             aria-label="Zamknij menu"
             onClick={() => setMenuOpen(false)}
           >
-            <svg
-              className="size-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            >
-              <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
+            <CloseIcon className="size-6" />
           </button>
         </div>
 
