@@ -1,6 +1,7 @@
 import GridOverlay from './components/GridOverlay'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Offer from './components/Offer'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <Offer />
       </main>
     </>
   )

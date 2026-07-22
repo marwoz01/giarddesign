@@ -1,10 +1,11 @@
-@import '@fontsource-variable/inter';
-@import '@fontsource-variable/montserrat';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500-italic.css';
+@import '@fontsource/montserrat/500.css';
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Inter Variable', system-ui, sans-serif;
-  --font-heading: 'Montserrat Variable', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Montserrat', system-ui, sans-serif;
 
   --color-ink: #111111;
   --color-surface: #ffffff;
@@ -33,10 +34,36 @@
 
   --text-body: 16px;
   --text-body--line-height: 1.5;
-  --text-body--letter-spacing: 0;
+  --text-body--letter-spacing: -0.01em;
+
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.5;
+  --text-body-sm--letter-spacing: 0;
+
+  --text-eyebrow: 12px;
+  --text-eyebrow--line-height: 1.5;
+  --text-eyebrow--letter-spacing: -0.01em;
+
+  --text-h2: 48px;
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h2--font-weight: 500;
+
+  --text-h2-sm: 32px;
+  --text-h2-sm--line-height: 1.15;
+  --text-h2-sm--letter-spacing: -0.03em;
+  --text-h2-sm--font-weight: 500;
+
+  --text-h3: 28px;
+  --text-h3--line-height: 1.15;
+  --text-h3--letter-spacing: 0;
+  --text-h3--font-weight: 500;
+
+  --radius-card: 28px;
 
   --spacing-hero: 737px;
   --spacing-hero-md: 560px;
+  --spacing-card: 370px;
 }
 
 :root {
