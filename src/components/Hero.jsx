@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { motion } from 'motion/react'
+import { EASE_OUT, fadeUp, staggerParent } from '../animations'
 import heroImg1 from '../assets/images/hero-1.jpg'
 import heroImg2 from '../assets/images/hero-2.jpg'
 import heroImg3 from '../assets/images/hero-3.jpg'
@@ -36,13 +38,26 @@ function Hero() {
     <section className="bg-beige relative overflow-x-clip">
       <div className="flex flex-col md:block">
         <div className="page-container relative z-10 flex flex-col justify-center py-12 md:h-hero-md md:py-0 xl:h-hero">
-          <div className="md:page-grid">
-            <h1 className="font-heading text-h1-sm text-ink md:text-h1-md md:col-span-6 xl:text-h1">
+          <motion.div
+            className="md:page-grid"
+            variants={staggerParent}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.h1
+              className="font-heading text-h1-sm text-ink md:text-h1-md md:col-span-6 xl:text-h1"
+              variants={fadeUp}
+              transition={EASE_OUT}
+            >
               Nowoczesna <br className="hidden xl:inline" />
               aranżacja <br className="hidden xl:inline" />
               Twojego ogrodu
-            </h1>
-            <div className="mt-11 md:col-span-6 md:col-start-1 xl:col-span-5 xl:col-start-1">
+            </motion.h1>
+            <motion.div
+              className="mt-11 md:col-span-6 md:col-start-1 xl:col-span-5 xl:col-start-1"
+              variants={fadeUp}
+              transition={EASE_OUT}
+            >
               <p className="font-sans text-body text-ink">
                 Marka GiardDesign to wieloletnie doświadczenie i wysoka
                 estetyka realizacji. Oferujemy kompleksowy zakres usług z
@@ -63,11 +78,16 @@ function Hero() {
                   <ArrowBottom className="size-4" />
                 </a>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
-        <div className="md:hero-breakout-left relative h-64 sm:h-80 md:absolute md:inset-y-0 md:right-0 md:h-auto">
+        <motion.div
+          className="md:hero-breakout-left relative h-64 sm:h-80 md:absolute md:inset-y-0 md:right-0 md:h-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: EASE_OUT.ease }}
+        >
           {SLIDES.map((slide, index) => (
             <img
               key={slide.image}
@@ -79,7 +99,7 @@ function Hero() {
               }`}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 mx-auto max-w-(--grid-max-width)">

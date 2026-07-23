@@ -1,3 +1,5 @@
+import { motion } from 'motion/react'
+import { EASE_OUT, VIEWPORT, fadeUp } from '../animations'
 import Logo from '../assets/icons/giarddesign.svg?react'
 import AdRespect from '../assets/icons/adRespect.svg?react'
 
@@ -12,7 +14,14 @@ function Footer() {
   return (
     <footer className="bg-ink text-cream py-20">
       <div className="page-container">
-        <div className="mx-auto max-w-cta">
+        <motion.div
+          className="mx-auto max-w-cta"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          transition={EASE_OUT}
+        >
           <div className="flex flex-col gap-8 xl:flex-row xl:items-center xl:justify-between">
             <Logo />
             <div className="flex flex-col items-start gap-4 xl:flex-row xl:items-center xl:gap-6">
@@ -60,7 +69,7 @@ function Footer() {
               <AdRespect />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   )

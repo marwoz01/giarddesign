@@ -1,3 +1,5 @@
+import { motion } from 'motion/react'
+import { EASE_OUT, VIEWPORT, fadeUp, staggerParent } from '../animations'
 import PenIcon from '../assets/icons/pen.svg?react'
 import EyeIcon from '../assets/icons/eye.svg?react'
 import StarsIcon from '../assets/icons/stars.svg?react'
@@ -32,7 +34,14 @@ function Offer() {
     <section id="oferta" className="bg-cream py-20 xl:pt-30 xl:pb-40">
       <div className="page-container">
         <div className="page-grid">
-          <div className="col-span-12 xl:col-span-7 xl:col-start-2">
+          <motion.div
+            className="col-span-12 xl:col-span-7 xl:col-start-2"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            transition={EASE_OUT}
+          >
             <p className="font-sans text-eyebrow text-brand">Oferta</p>
             <h2 className="font-heading text-h2-sm text-ink mt-4 md:text-h2">
               Działamy{' '}
@@ -45,28 +54,37 @@ function Offer() {
               życie, a na każdym etapie posłużymy radą i wieloletnim
               doświadczeniem.
             </p>
-          </div>
+          </motion.div>
         </div>
 
-        <ul className="page-grid mt-24">
+        <motion.ul
+          className="page-grid mt-24"
+          variants={staggerParent}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+        >
           {CARDS.map(({ icon: Icon, title, text, linkLabel, href }) => (
-            <li
+            <motion.li
               key={title}
               className="bg-surface rounded-card min-h-card col-span-12 flex flex-col px-10 py-12 md:col-span-6 xl:col-span-4"
+              variants={fadeUp}
+              transition={EASE_OUT}
+              whileHover={{ y: -6 }}
             >
               <Icon className="size-10" />
               <h3 className="font-heading text-h3 text-ink mt-8">{title}</h3>
               <p className="font-sans text-body-sm text-ink mt-3">{text}</p>
               <a
                 href={href}
-                className="text-brand font-sans text-body mt-auto flex items-center gap-2 self-start border-b pb-2"
+                className="text-brand font-sans text-body group mt-auto flex items-center gap-2 self-start border-b pb-2"
               >
                 {linkLabel}
-                <ArrowRight className="size-4" />
+                <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       </div>
     </section>
   )

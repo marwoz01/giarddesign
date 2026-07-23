@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { motion } from 'motion/react'
 import Masonry from 'react-masonry-css'
+import { EASE_OUT, VIEWPORT, fadeUp } from '../animations'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import ArrowBottom from '../assets/icons/arrow-bottom.svg?react'
@@ -50,12 +52,19 @@ function Realizations() {
 
   return (
     <section id="realizacje" className="bg-beige py-20 xl:pt-30 xl:pb-40">
-      <div className="page-container">
+      <motion.div
+        className="page-container"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={VIEWPORT}
+        transition={EASE_OUT}
+      >
         <p className="font-sans text-eyebrow text-brand">Realizacje</p>
         <h2 className="font-heading text-h2-sm text-ink mt-4 md:text-h2">
           Nasze <em className="font-sans tracking-normal italic">projekty</em>
         </h2>
-      </div>
+      </motion.div>
 
       <div className="relative mt-24">
         <Masonry
@@ -64,15 +73,20 @@ function Realizations() {
           columnClassName="masonry-column"
         >
           {visiblePhotos.map(({ src, alt }, index) => (
-            <button
+            <motion.button
               key={src}
               type="button"
               className="block w-full"
               aria-label={`Powiększ zdjęcie: ${alt}`}
               onClick={() => setLightboxIndex(index)}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEWPORT}
+              transition={{ ...EASE_OUT, delay: (index % 3) * 0.08 }}
             >
               <img src={src} alt={alt} className="w-full" />
-            </button>
+            </motion.button>
           ))}
         </Masonry>
 

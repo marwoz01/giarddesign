@@ -1,8 +1,18 @@
+import { motion } from 'motion/react'
+import { EASE_OUT, VIEWPORT, fadeUp } from '../animations'
+
 function ContactCTA() {
   return (
     <section id="kontakt" className="bg-cream py-20 xl:py-24">
       <div className="page-container">
-        <div className="bg-brand mx-auto flex max-w-cta flex-col gap-8 px-8 py-12 xl:flex-row xl:items-center xl:justify-between xl:gap-16 xl:px-30 xl:py-27.5">
+        <motion.div
+          className="bg-brand mx-auto flex max-w-cta flex-col gap-8 px-8 py-12 xl:flex-row xl:items-center xl:justify-between xl:gap-16 xl:px-30 xl:py-27.5"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          transition={EASE_OUT}
+        >
           <h2 className="font-heading text-cream text-[28px] leading-[1.2] font-normal md:text-[32px] xl:text-[40px] xl:tracking-[-2px]">
             Zostańmy w kontakcie!{' '}
             <br className="hidden xl:inline" />
@@ -28,7 +38,7 @@ function ContactCTA() {
               Instagram
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

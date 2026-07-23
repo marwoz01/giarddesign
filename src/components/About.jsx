@@ -1,3 +1,5 @@
+import { motion } from 'motion/react'
+import { EASE_OUT, VIEWPORT, fadeUp } from '../animations'
 import aboutImg from '../assets/images/about.jpg'
 import ArrowRight from '../assets/icons/arrow-right-sm.svg?react'
 
@@ -5,17 +7,30 @@ function About() {
   return (
     <section id="o-firmie" className="bg-brand relative overflow-x-clip">
       <div className="flex flex-col md:block">
-        <div className="md:about-breakout-right relative h-64 sm:h-80 md:absolute md:inset-y-0 md:left-0 md:h-auto">
+        <motion.div
+          className="md:about-breakout-right relative h-64 overflow-hidden sm:h-80 md:absolute md:inset-y-0 md:left-0 md:h-auto"
+          initial={{ opacity: 0, scale: 1.04 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={VIEWPORT}
+          transition={{ duration: 0.9, ease: EASE_OUT.ease }}
+        >
           <img
             src={aboutImg}
             alt="Ogród w stylu japońskim z kamienną ścieżką i drewnianą altaną"
             className="h-full w-full object-cover"
           />
-        </div>
+        </motion.div>
 
         <div className="page-container relative z-10 flex flex-col justify-center py-12 md:h-hero-md md:py-0 xl:h-about">
           <div className="md:page-grid">
-            <div className="md:col-span-6 md:col-start-7 xl:col-span-5 xl:col-start-8">
+            <motion.div
+              className="md:col-span-6 md:col-start-7 xl:col-span-5 xl:col-start-8"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEWPORT}
+              transition={EASE_OUT}
+            >
               <p className="font-sans text-eyebrow text-cream">O firmie</p>
               <h2 className="font-heading text-h2-sm text-cream mt-4 md:text-h2">
                 Tworzymy <br />z{' '}
@@ -36,7 +51,7 @@ function About() {
                 Poznaj nas bliżej
                 <ArrowRight className="size-4" />
               </a>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

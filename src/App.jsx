@@ -1,3 +1,4 @@
+import { MotionConfig } from 'motion/react'
 import GridOverlay from './components/GridOverlay'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -9,7 +10,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <GridOverlay />
       <Navbar />
       <main>
@@ -20,7 +21,7 @@ function App() {
         <ContactCTA />
       </main>
       <Footer />
-    </>
+    </MotionConfig>
   )
 }
 
