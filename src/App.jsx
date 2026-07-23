@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import Offer from './components/Offer'
 import About from './components/About'
 import Realizations from './components/Realizations'
+import ContactCTA from './components/ContactCTA'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Offer />
         <About />
         <Realizations />
+        <ContactCTA />
       </main>
     </>
   )
