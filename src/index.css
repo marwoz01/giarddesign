@@ -64,6 +64,7 @@
   --spacing-hero: 737px;
   --spacing-hero-md: 560px;
   --spacing-card: 370px;
+  --spacing-about: 720px;
 }
 
 :root {
@@ -108,6 +109,17 @@
   left: calc(
     (100vw - var(--container-w)) / 2 + var(--grid-margin) + 6 * var(--col-w) +
       6 * var(--grid-gutter)
+  );
+}
+
+@utility about-breakout-right {
+  --container-w: min(100vw, var(--grid-max-width));
+  --col-w: calc(
+    (var(--container-w) - 2 * var(--grid-margin) - 11 * var(--grid-gutter)) / 12
+  );
+  right: calc(
+    (100vw - var(--container-w)) / 2 + var(--container-w) - var(--grid-margin) -
+      6 * var(--col-w) - 5 * var(--grid-gutter)
   );
 }
 
