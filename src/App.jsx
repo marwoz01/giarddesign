@@ -5,6 +5,7 @@ import Offer from './components/Offer'
 import About from './components/About'
 import Realizations from './components/Realizations'
 import ContactCTA from './components/ContactCTA'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Realizations />
         <ContactCTA />
       </main>
+      <Footer />
     </>
   )
 }
