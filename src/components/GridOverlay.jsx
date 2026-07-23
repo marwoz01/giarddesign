@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 const GRID_COLUMNS = 12
 
 function GridOverlay() {
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     function handleKeyDown(event) {
