@@ -1,4 +1,5 @@
 import { MotionConfig } from 'motion/react'
+import PageLoader from './components/PageLoader'
 import GridOverlay from './components/GridOverlay'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -11,6 +12,7 @@ import Footer from './components/Footer'
 function App() {
   return (
     <MotionConfig reducedMotion="user">
+      <PageLoader />
       <GridOverlay />
       <Navbar />
       <main>

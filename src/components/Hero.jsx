@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
-import { EASE_OUT, fadeUp, staggerParent } from '../animations'
+import { EASE_OUT, LOADER_REVEAL, fadeUp, heroStagger } from '../animations'
 import heroImg1 from '../assets/images/hero-1.jpg'
 import heroImg2 from '../assets/images/hero-2.jpg'
 import heroImg3 from '../assets/images/hero-3.jpg'
@@ -40,7 +40,7 @@ function Hero() {
         <div className="page-container relative z-10 flex flex-col justify-center py-12 md:h-hero-md md:py-0 xl:h-hero">
           <motion.div
             className="md:page-grid"
-            variants={staggerParent}
+            variants={heroStagger}
             initial="hidden"
             animate="visible"
           >
@@ -86,7 +86,11 @@ function Hero() {
           className="md:hero-breakout-left relative h-64 sm:h-80 md:absolute md:inset-y-0 md:right-0 md:h-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: EASE_OUT.ease }}
+          transition={{
+            duration: 0.8,
+            delay: LOADER_REVEAL,
+            ease: EASE_OUT.ease,
+          }}
         >
           {SLIDES.map((slide, index) => (
             <img
