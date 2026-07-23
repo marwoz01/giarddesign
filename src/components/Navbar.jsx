@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Logo from '../assets/icons/logo.svg?react'
 import Search from '../assets/icons/lupa.svg?react'
 import Chevron from '../assets/icons/chevron.svg?react'
@@ -21,6 +21,30 @@ const MENU_ITEMS = [
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileOfferOpen, setMobileOfferOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const searchRef = useRef(null)
+  const searchInputRef = useRef(null)
+
+  useEffect(() => {
+    if (!searchOpen) return
+
+    searchInputRef.current?.focus()
+
+    function handlePointerDown(event) {
+      if (!searchRef.current?.contains(event.target)) setSearchOpen(false)
+    }
+
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') setSearchOpen(false)
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [searchOpen])
 
   useEffect(() => {
     const query = window.matchMedia('(min-width: 768px)')
@@ -79,9 +103,32 @@ function Navbar() {
                 )}
               </li>
             ))}
-            <li>
-              <button type="button" className="flex" aria-label="Szukaj">
-                <Search className="size-6" />
+            <li ref={searchRef} className="flex items-center">
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  searchOpen ? 'mr-3 w-28 xl:w-48' : 'w-0'
+                }`}
+              >
+                <input
+                  ref={searchInputRef}
+                  type="search"
+                  placeholder="Szukaj..."
+                  aria-label="Szukaj"
+                  className="font-sans text-nav border-ink/20 w-full border-b bg-transparent pb-1 outline-none"
+                />
+              </div>
+              <button
+                type="button"
+                className="flex"
+                aria-label={searchOpen ? 'Zamknij wyszukiwarkę' : 'Szukaj'}
+                aria-expanded={searchOpen}
+                onClick={() => setSearchOpen((open) => !open)}
+              >
+                {searchOpen ? (
+                  <CloseIcon className="size-6" />
+                ) : (
+                  <Search className="size-6" />
+                )}
               </button>
             </li>
           </ul>
@@ -120,6 +167,16 @@ function Navbar() {
           >
             <CloseIcon className="size-6" />
           </button>
+        </div>
+
+        <div className="flex items-center gap-3 px-5 pb-6">
+          <Search className="size-5 shrink-0" />
+          <input
+            type="search"
+            placeholder="Szukaj..."
+            aria-label="Szukaj"
+            className="font-sans text-nav border-ink/20 w-full border-b bg-transparent pb-1 outline-none"
+          />
         </div>
 
         <nav>
