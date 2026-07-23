@@ -72,12 +72,14 @@
   --grid-max-width: 1440px;
   --grid-gutter: 16px;
   --grid-margin: 20px;
+  --masonry-gutter: 16px;
 }
 
 @media (width >= 768px) {
   :root {
     --grid-gutter: 32px;
     --grid-margin: 40px;
+    --masonry-gutter: 32px;
   }
 }
 
@@ -85,6 +87,7 @@
   :root {
     --grid-gutter: 64px;
     --grid-margin: 89px;
+    --masonry-gutter: 44px;
   }
 }
 
@@ -110,6 +113,17 @@
     (100vw - var(--container-w)) / 2 + var(--grid-margin) + 6 * var(--col-w) +
       6 * var(--grid-gutter)
   );
+}
+
+.masonry-grid {
+  display: flex;
+  gap: var(--masonry-gutter);
+}
+
+.masonry-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--masonry-gutter);
 }
 
 @utility about-breakout-right {
