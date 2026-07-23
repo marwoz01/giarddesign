@@ -54,7 +54,7 @@ function Offer() {
         </div>
 
         <motion.ul
-          className="page-grid mt-24"
+          className="page-grid mt-24 gap-y-(--grid-gutter)"
           variants={staggerParent}
           initial="hidden"
           whileInView="visible"
