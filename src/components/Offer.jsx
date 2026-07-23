@@ -9,14 +9,14 @@ const CARDS = [
     title: 'Projekty',
     text: 'Zaprojektujemy Twój ogród w nowoczesnym stylu i z najlepszym wykorzystaniem istniejącej przestrzeni.',
     linkLabel: 'Dowiedz się więcej',
-    href: '#projekty',
+    href: '#oferta',
   },
   {
     icon: EyeIcon,
     title: 'Wizualizacje',
     text: 'Przedstawimy Ci projekty koncepcyjne w postaci wirtualnego spaceru animowanego w technologii 3D.',
     linkLabel: 'Dowiedz się więcej',
-    href: '#wizualizacje',
+    href: '#oferta',
   },
   {
     icon: StarsIcon,
