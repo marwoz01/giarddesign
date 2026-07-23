@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { EASE_OUT, VIEWPORT, fadeUp, staggerParent } from '../animations'
+import { EASE_OUT, VIEWPORT, fadeUp, reveal, staggerParent } from '../animations'
 import PenIcon from '../assets/icons/pen.svg?react'
 import EyeIcon from '../assets/icons/eye.svg?react'
 import StarsIcon from '../assets/icons/stars.svg?react'
@@ -36,19 +36,14 @@ function Offer() {
       <div className="page-container">
         <div className="page-grid">
           <motion.div
+            {...reveal}
             className="col-span-12 xl:col-span-7 xl:col-start-2"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            transition={EASE_OUT}
           >
-            <p className="font-sans text-eyebrow text-brand">Oferta</p>
-            <h2 className="font-heading text-h2-sm text-ink mt-4 md:text-h2">
-              Działamy{' '}
-              <em className="font-sans tracking-normal italic">kompleksowo</em>
+            <p className="text-eyebrow text-brand">Oferta</p>
+            <h2 className="heading-2 text-ink mt-4">
+              Działamy <em className="accent">kompleksowo</em>
             </h2>
-            <p className="font-sans text-body text-ink mt-8">
+            <p className="text-body text-ink mt-8">
               Oferujemy kompletną obsługę inwestycji terenów zielonych.
               Projektujemy nowoczesne ogrody przydomowe oraz rezydencjonalne.
               Stworzymy dla Ciebie projekt, zwizualizujemy go i wcielimy w
@@ -74,11 +69,11 @@ function Offer() {
               whileHover={{ y: -6 }}
             >
               <Icon className="size-10" />
-              <h3 className="font-heading text-h3 text-ink mt-8">{title}</h3>
-              <p className="font-sans text-body-sm text-ink mt-3">{text}</p>
+              <h3 className="heading-3 text-ink mt-8">{title}</h3>
+              <p className="text-body-sm text-ink mt-3">{text}</p>
               <a
                 href={href}
-                className="text-brand font-sans text-body group mt-auto flex items-center gap-2 self-start border-b pb-2"
+                className="text-brand text-body group mt-auto flex items-center gap-2 self-start border-b pb-2"
               >
                 {linkLabel}
                 <HoverSlideIcon icon={ArrowRight} axis="x" />

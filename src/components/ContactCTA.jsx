@@ -1,42 +1,37 @@
 import { motion } from 'motion/react'
-import { EASE_OUT, VIEWPORT, fadeUp } from '../animations'
+import { reveal } from '../animations'
+import Button from './Button'
 
 function ContactCTA() {
   return (
     <section id="kontakt" className="bg-cream py-20 xl:py-24">
       <div className="page-container">
         <motion.div
+          {...reveal}
           className="bg-brand mx-auto flex max-w-cta flex-col gap-8 px-8 py-12 xl:flex-row xl:items-center xl:justify-between xl:gap-16 xl:px-30 xl:py-27.5"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT}
-          transition={EASE_OUT}
         >
-          <h2 className="font-heading text-cream text-[28px] leading-[1.2] font-normal md:text-[32px] xl:text-[40px] xl:tracking-[-2px]">
+          <h2 className="heading-cta text-cream">
             Zostańmy w kontakcie!{' '}
             <br className="hidden xl:inline" />
             Znajdziesz nas na{' '}
-            <em className="font-sans font-medium italic xl:tracking-[1px]">
-              Instagramie
-            </em>
+            <em className="accent font-medium xl:tracking-[1px]">Instagramie</em>
             .
           </h2>
 
           <div className="flex flex-col items-start gap-6">
-            <p className="font-sans text-body text-cream">
+            <p className="text-body text-cream">
               Śledź nasze
               <br />
               najnowsze realizacje!
             </p>
-            <a
+            <Button
               href="https://instagram.com"
+              variant="filledLight"
               target="_blank"
               rel="noreferrer"
-              className="bg-cream text-brand hover:brightness-95 rounded-full pt-2.5 pr-6 pb-3 pl-6 font-sans text-base leading-normal tracking-normal transition-[filter] duration-200"
             >
               Instagram
-            </a>
+            </Button>
           </div>
         </motion.div>
       </div>

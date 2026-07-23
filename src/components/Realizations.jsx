@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
 import Masonry from 'react-masonry-css'
-import { EASE_OUT, VIEWPORT, fadeUp } from '../animations'
+import { EASE_OUT, reveal } from '../animations'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import ArrowBottom from '../assets/icons/arrow-bottom.svg?react'
 import HoverSlideIcon from './HoverSlideIcon'
+import Button from './Button'
 import photo1 from '../assets/images/projects/project-1.jpg'
 import photo2 from '../assets/images/projects/project-2.jpg'
 import photo3 from '../assets/images/projects/project-3.jpg'
@@ -53,17 +54,10 @@ function Realizations() {
 
   return (
     <section id="realizacje" className="bg-beige py-20 xl:pt-30 xl:pb-40">
-      <motion.div
-        className="page-container"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={VIEWPORT}
-        transition={EASE_OUT}
-      >
-        <p className="font-sans text-eyebrow text-brand">Realizacje</p>
-        <h2 className="font-heading text-h2-sm text-ink mt-4 md:text-h2">
-          Nasze <em className="font-sans tracking-normal italic">projekty</em>
+      <motion.div {...reveal} className="page-container">
+        <p className="text-eyebrow text-brand">Realizacje</p>
+        <h2 className="heading-2 text-ink mt-4">
+          Nasze <em className="accent">projekty</em>
         </h2>
       </motion.div>
 
@@ -80,10 +74,7 @@ function Realizations() {
               className="block w-full"
               aria-label={`Powiększ zdjęcie: ${alt}`}
               onClick={() => setLightboxIndex(index)}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={VIEWPORT}
+              {...reveal}
               transition={{ ...EASE_OUT, delay: (index % 3) * 0.08 }}
             >
               <img src={src} alt={alt} className="w-full" />
@@ -92,9 +83,9 @@ function Realizations() {
         </Masonry>
 
         <div className="from-beige pointer-events-none absolute inset-x-0 bottom-0 flex h-3/4 items-end justify-center bg-linear-to-t to-transparent">
-          <button
-            type="button"
-            className="border-ink text-ink hover:bg-ink/5 font-sans text-body group pointer-events-auto flex items-center gap-2 rounded-full border pt-3 pr-6 pb-3.5 pl-6 transition-colors duration-200"
+          <Button
+            variant="outlineDark"
+            className="group pointer-events-auto"
             aria-expanded={expanded}
             onClick={() => setExpanded((open) => !open)}
           >
@@ -106,7 +97,7 @@ function Realizations() {
             >
               <HoverSlideIcon icon={ArrowBottom} axis="y" />
             </span>
-          </button>
+          </Button>
         </div>
       </div>
 

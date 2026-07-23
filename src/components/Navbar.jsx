@@ -79,7 +79,7 @@ function Navbar() {
               <li key={label} className="group relative flex h-full items-center">
                 <a
                   href={href}
-                  className="font-sans text-nav flex items-center gap-1"
+                  className="text-nav flex items-center gap-1"
                 >
                   {label}
                   {children && (
@@ -93,7 +93,7 @@ function Navbar() {
                       <li key={child.label}>
                         <a
                           href={child.href}
-                          className="font-sans text-nav hover:bg-cream block px-5 py-2"
+                          className="text-nav hover:bg-cream block px-5 py-2"
                         >
                           {child.label}
                         </a>
@@ -114,7 +114,7 @@ function Navbar() {
                   type="search"
                   placeholder="Szukaj..."
                   aria-label="Szukaj"
-                  className="font-sans text-nav border-ink/20 w-full border-b bg-transparent pb-1 outline-none"
+                  className="text-nav border-ink/20 w-full border-b bg-transparent pb-1 outline-none"
                 />
               </div>
               <button
@@ -175,7 +175,7 @@ function Navbar() {
             type="search"
             placeholder="Szukaj..."
             aria-label="Szukaj"
-            className="font-sans text-nav border-ink/20 w-full border-b bg-transparent pb-1 outline-none"
+            className="text-nav border-ink/20 w-full border-b bg-transparent pb-1 outline-none"
           />
         </div>
 
@@ -187,7 +187,7 @@ function Navbar() {
                   <>
                     <button
                       type="button"
-                      className="font-sans text-nav flex w-full items-center gap-1 px-5 py-4"
+                      className="text-nav flex w-full items-center gap-1 px-5 py-4"
                       aria-expanded={mobileOfferOpen}
                       onClick={() => setMobileOfferOpen((open) => !open)}
                     >
@@ -205,7 +205,7 @@ function Navbar() {
                         <li key={child.label}>
                           <a
                             href={child.href}
-                            className="font-sans text-nav block px-8 py-3"
+                            className="text-nav block px-8 py-3"
                             onClick={() => setMenuOpen(false)}
                           >
                             {child.label}
@@ -217,7 +217,7 @@ function Navbar() {
                 ) : (
                   <a
                     href={href}
-                    className="font-sans text-nav flex items-center gap-1 px-5 py-4"
+                    className="text-nav flex items-center gap-1 px-5 py-4"
                     onClick={() => setMenuOpen(false)}
                   >
                     {label}

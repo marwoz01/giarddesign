@@ -13,7 +13,7 @@ function App() {
   return (
     <MotionConfig reducedMotion="user">
       <PageLoader />
-      <GridOverlay />
+      {import.meta.env.DEV && <GridOverlay />}
       <Navbar />
       <main>
         <Hero />

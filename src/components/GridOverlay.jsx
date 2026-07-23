@@ -17,7 +17,7 @@ function GridOverlay() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  if (!import.meta.env.DEV || !visible) return null
+  if (!visible) return null
 
   return (
     <div className="pointer-events-none fixed inset-0 z-9999">

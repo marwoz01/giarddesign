@@ -8,6 +8,7 @@ import ArrowLeft from '../assets/icons/arrow-left.svg?react'
 import ArrowRight from '../assets/icons/arrow-right.svg?react'
 import ArrowBottom from '../assets/icons/arrow-bottom.svg?react'
 import HoverSlideIcon from './HoverSlideIcon'
+import Button from './Button'
 
 const SLIDES = [
   {
@@ -46,7 +47,7 @@ function Hero() {
             animate="visible"
           >
             <motion.h1
-              className="font-heading text-h1-sm text-ink md:text-h1-md md:col-span-6 xl:text-h1"
+              className="heading-1 text-ink md:col-span-6"
               variants={fadeUp}
               transition={EASE_OUT}
             >
@@ -59,25 +60,23 @@ function Hero() {
               variants={fadeUp}
               transition={EASE_OUT}
             >
-              <p className="font-sans text-body text-ink">
+              <p className="text-body text-ink">
                 Marka GiardDesign to wieloletnie doświadczenie i wysoka
                 estetyka realizacji. Oferujemy kompleksowy zakres usług z
                 indywidualnym podejściem do każdego projektu.
               </p>
               <div className="mt-18 flex flex-wrap gap-9 xl:flex-nowrap">
-                <a
-                  href="#kontakt"
-                  className="bg-brand text-cream font-sans text-body hover:brightness-95 rounded-full pt-3 pr-6 pb-3.5 pl-6 whitespace-nowrap transition-[filter] duration-200"
-                >
+                <Button href="#kontakt" className="whitespace-nowrap">
                   Skontaktuj się z nami
-                </a>
-                <a
+                </Button>
+                <Button
                   href="#realizacje"
-                  className="border-brand text-brand hover:bg-brand/5 font-sans text-body group flex items-center gap-2 rounded-full border pt-3 pr-6 pb-3.5 pl-6 whitespace-nowrap transition-colors duration-200"
+                  variant="outline"
+                  className="group whitespace-nowrap"
                 >
                   Zobacz nasze realizacje
                   <HoverSlideIcon icon={ArrowBottom} axis="y" />
-                </a>
+                </Button>
               </div>
             </motion.div>
           </motion.div>
