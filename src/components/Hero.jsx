@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import heroImg1 from '../assets/images/hero-1.jpg'
+import heroImg2 from '../assets/images/hero-2.jpg'
+import heroImg3 from '../assets/images/hero-3.jpg'
 import ArrowLeft from '../assets/icons/arrow-left.svg?react'
 import ArrowRight from '../assets/icons/arrow-right.svg?react'
 import ArrowBottom from '../assets/icons/arrow-bottom.svg?react'
@@ -8,6 +10,14 @@ const SLIDES = [
   {
     image: heroImg1,
     alt: 'Nowoczesny ogród z geometryczną aranżacją zieleni',
+  },
+  {
+    image: heroImg2,
+    alt: 'Nowoczesny taras z minimalistycznymi meblami wśród zieleni',
+  },
+  {
+    image: heroImg3,
+    alt: 'Widok z lotu ptaka na zaaranżowany ogród na dachu',
   },
 ]
 
@@ -21,8 +31,6 @@ function Hero() {
   function showNext() {
     setActiveSlide((current) => (current + 1) % SLIDES.length)
   }
-
-  const slide = SLIDES[activeSlide]
 
   return (
     <section className="bg-beige relative overflow-x-clip">
@@ -60,11 +68,17 @@ function Hero() {
         </div>
 
         <div className="md:hero-breakout-left relative h-64 sm:h-80 md:absolute md:inset-y-0 md:right-0 md:h-auto">
-          <img
-            src={slide.image}
-            alt={slide.alt}
-            className="h-full w-full object-cover"
-          />
+          {SLIDES.map((slide, index) => (
+            <img
+              key={slide.image}
+              src={slide.image}
+              alt={index === activeSlide ? slide.alt : ''}
+              aria-hidden={index === activeSlide ? undefined : true}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                index === activeSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          ))}
         </div>
       </div>
 
