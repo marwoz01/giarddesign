@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Masonry from 'react-masonry-css'
+import Lightbox from 'yet-another-react-lightbox'
+import 'yet-another-react-lightbox/styles.css'
 import ArrowBottom from '../assets/icons/arrow-bottom.svg?react'
 import photo1 from '../assets/images/projects/project-1.jpg'
 import photo2 from '../assets/images/projects/project-2.jpg'
@@ -25,7 +27,10 @@ const PHOTOS = [
   { src: photo9, alt: 'Drewniana pergola z przezroczystym zadaszeniem nad tarasem' },
   { src: photo2, alt: 'Betonowe schody z balustradą wśród zieleni' },
   { src: photo10, alt: 'Zieleń w donicach wzdłuż kamiennego dziedzińca' },
-  { src: photo11, alt: 'Okrągły dziedziniec z kamiennym murkiem i strzyżonym żywopłotem' },
+  {
+    src: photo11,
+    alt: 'Okrągły dziedziniec z kamiennym murkiem i strzyżonym żywopłotem',
+  },
   { src: photo12, alt: 'Ceglana alejka wśród kwitnących rabat i żywopłotu' },
 ]
 
@@ -39,6 +44,8 @@ const BREAKPOINTS = {
 
 function Realizations() {
   const [expanded, setExpanded] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState(-1)
+
   const visiblePhotos = expanded ? PHOTOS : PHOTOS.slice(0, INITIAL_COUNT)
 
   return (
@@ -56,8 +63,16 @@ function Realizations() {
           className="masonry-grid"
           columnClassName="masonry-column"
         >
-          {visiblePhotos.map(({ src, alt }) => (
-            <img key={src} src={src} alt={alt} className="w-full" />
+          {visiblePhotos.map(({ src, alt }, index) => (
+            <button
+              key={src}
+              type="button"
+              className="block w-full"
+              aria-label={`Powiększ zdjęcie: ${alt}`}
+              onClick={() => setLightboxIndex(index)}
+            >
+              <img src={src} alt={alt} className="w-full" />
+            </button>
           ))}
         </Masonry>
 
@@ -77,6 +92,13 @@ function Realizations() {
           </button>
         </div>
       </div>
+
+      <Lightbox
+        open={lightboxIndex >= 0}
+        index={lightboxIndex}
+        close={() => setLightboxIndex(-1)}
+        slides={visiblePhotos.map(({ src, alt }) => ({ src, alt }))}
+      />
     </section>
   )
 }
