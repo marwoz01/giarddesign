@@ -30,7 +30,7 @@ function Footer() {
               </p>
               <a
                 href="#kontakt"
-                className="bg-brand font-sans text-body rounded-full pt-3 pr-6 pb-3.5 pl-6"
+                className="bg-brand font-sans text-body hover:brightness-95 rounded-full pt-3 pr-6 pb-3.5 pl-6 transition-[filter] duration-200"
               >
                 Skontaktuj się z nami
               </a>

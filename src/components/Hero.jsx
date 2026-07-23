@@ -7,6 +7,7 @@ import heroImg3 from '../assets/images/hero-3.jpg'
 import ArrowLeft from '../assets/icons/arrow-left.svg?react'
 import ArrowRight from '../assets/icons/arrow-right.svg?react'
 import ArrowBottom from '../assets/icons/arrow-bottom.svg?react'
+import HoverSlideIcon from './HoverSlideIcon'
 
 const SLIDES = [
   {
@@ -66,16 +67,16 @@ function Hero() {
               <div className="mt-18 flex flex-wrap gap-9 xl:flex-nowrap">
                 <a
                   href="#kontakt"
-                  className="bg-brand text-cream font-sans text-body rounded-full pt-3 pr-6 pb-3.5 pl-6 whitespace-nowrap"
+                  className="bg-brand text-cream font-sans text-body hover:brightness-95 rounded-full pt-3 pr-6 pb-3.5 pl-6 whitespace-nowrap transition-[filter] duration-200"
                 >
                   Skontaktuj się z nami
                 </a>
                 <a
                   href="#realizacje"
-                  className="border-brand text-brand font-sans text-body flex items-center gap-2 rounded-full border pt-3 pr-6 pb-3.5 pl-6 whitespace-nowrap"
+                  className="border-brand text-brand hover:bg-brand/5 font-sans text-body group flex items-center gap-2 rounded-full border pt-3 pr-6 pb-3.5 pl-6 whitespace-nowrap transition-colors duration-200"
                 >
                   Zobacz nasze realizacje
-                  <ArrowBottom className="size-4" />
+                  <HoverSlideIcon icon={ArrowBottom} axis="y" />
                 </a>
               </div>
             </motion.div>

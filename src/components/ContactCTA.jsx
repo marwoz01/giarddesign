@@ -33,7 +33,7 @@ function ContactCTA() {
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              className="bg-cream text-brand rounded-full pt-2.5 pr-6 pb-3 pl-6 font-sans text-base leading-normal tracking-normal"
+              className="bg-cream text-brand hover:brightness-95 rounded-full pt-2.5 pr-6 pb-3 pl-6 font-sans text-base leading-normal tracking-normal transition-[filter] duration-200"
             >
               Instagram
             </a>

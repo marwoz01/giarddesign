@@ -2,6 +2,7 @@ import { motion } from 'motion/react'
 import { EASE_OUT, VIEWPORT, fadeUp } from '../animations'
 import aboutImg from '../assets/images/about.jpg'
 import ArrowRight from '../assets/icons/arrow-right-sm.svg?react'
+import HoverSlideIcon from './HoverSlideIcon'
 
 function About() {
   return (
@@ -46,10 +47,10 @@ function About() {
               </p>
               <a
                 href="#kontakt"
-                className="border-cream text-cream font-sans text-body mt-18 inline-flex items-center gap-2 rounded-full border pt-3 pr-6 pb-3.5 pl-6"
+                className="border-cream text-cream hover:bg-cream/10 font-sans text-body group mt-18 inline-flex items-center gap-2 rounded-full border pt-3 pr-6 pb-3.5 pl-6 transition-colors duration-200"
               >
                 Poznaj nas bliżej
-                <ArrowRight className="size-4" />
+                <HoverSlideIcon icon={ArrowRight} axis="x" />
               </a>
             </motion.div>
           </div>

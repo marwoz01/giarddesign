@@ -5,6 +5,7 @@ import { EASE_OUT, VIEWPORT, fadeUp } from '../animations'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import ArrowBottom from '../assets/icons/arrow-bottom.svg?react'
+import HoverSlideIcon from './HoverSlideIcon'
 import photo1 from '../assets/images/projects/project-1.jpg'
 import photo2 from '../assets/images/projects/project-2.jpg'
 import photo3 from '../assets/images/projects/project-3.jpg'
@@ -93,16 +94,18 @@ function Realizations() {
         <div className="from-beige pointer-events-none absolute inset-x-0 bottom-0 flex h-3/4 items-end justify-center bg-linear-to-t to-transparent">
           <button
             type="button"
-            className="border-ink text-ink font-sans text-body pointer-events-auto flex items-center gap-2 rounded-full border pt-3 pr-6 pb-3.5 pl-6"
+            className="border-ink text-ink hover:bg-ink/5 font-sans text-body group pointer-events-auto flex items-center gap-2 rounded-full border pt-3 pr-6 pb-3.5 pl-6 transition-colors duration-200"
             aria-expanded={expanded}
             onClick={() => setExpanded((open) => !open)}
           >
             {expanded ? 'Zwiń' : 'Rozwiń'}
-            <ArrowBottom
-              className={`size-4 transition-transform duration-200 ${
+            <span
+              className={`inline-block transition-transform duration-200 ${
                 expanded ? 'rotate-180' : ''
               }`}
-            />
+            >
+              <HoverSlideIcon icon={ArrowBottom} axis="y" />
+            </span>
           </button>
         </div>
       </div>

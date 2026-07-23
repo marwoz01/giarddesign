@@ -4,6 +4,7 @@ import PenIcon from '../assets/icons/pen.svg?react'
 import EyeIcon from '../assets/icons/eye.svg?react'
 import StarsIcon from '../assets/icons/stars.svg?react'
 import ArrowRight from '../assets/icons/arrow-right-sm.svg?react'
+import HoverSlideIcon from './HoverSlideIcon'
 
 const CARDS = [
   {
@@ -80,7 +81,7 @@ function Offer() {
                 className="text-brand font-sans text-body group mt-auto flex items-center gap-2 self-start border-b pb-2"
               >
                 {linkLabel}
-                <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+                <HoverSlideIcon icon={ArrowRight} axis="x" />
               </a>
             </motion.li>
           ))}
